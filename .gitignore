@@ -1,0 +1,6 @@
+node_modules/
+assets/*.js
+assets/*.css
+assets/.vite/
+snippets/*.liquid
+*.tgz

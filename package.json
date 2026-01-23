@@ -1,0 +1,20 @@
+{
+  "name": "sandbox-vite-plugin-shopify-clean",
+  "version": "1.0.0",
+  "description": "Test repo for @driver-digital/vite-plugin-shopify-clean",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "clean": "rm -rf assets/*.js assets/*.css assets/.vite",
+    "simulate-stale": "node scripts/create-stale-files.js",
+    "test-plugin": "npm run simulate-stale && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^7.3.1",
+    "vite-plugin-shopify": "^4.1.1"
+  }
+}
