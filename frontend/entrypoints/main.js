@@ -1,4 +1,4 @@
-import '../styles/theme.css'
+import './styles/theme.css'
 import './scripts/theme.js'
 import './scripts/product.js'
 

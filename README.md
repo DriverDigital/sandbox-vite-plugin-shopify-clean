@@ -37,7 +37,7 @@ npm install
 ## Testing watch mode
 
 1. Run: `npm run dev`
-2. Modify `frontend/entrypoints/theme.js` (e.g., change the console.log message)
+2. Modify `frontend/entrypoints/main.js` (e.g., change the console.log message)
 3. Save and verify old hash files are cleaned up
 
 ## Available scripts
@@ -56,13 +56,13 @@ After `npm run test-plugin`:
 
 | File | Should exist? |
 |------|---------------|
-| `assets/theme-OLD1234.js` | No (cleaned) |
-| `assets/theme-OLD5678.css` | No (cleaned) |
-| `assets/product-OLD9abc.js` | No (cleaned) |
+| `assets/main-OLD1234.js` | No (cleaned) |
+| `assets/main-OLD5678.css` | No (cleaned) |
+| `assets/example-OLDabcd.woff2` | No (cleaned) |
 | `assets/deleted-OLDdef0.js` | No (cleaned) |
-| `assets/theme-[newhash].js` | Yes |
-| `assets/theme-[newhash].css` | Yes |
-| `assets/product-[newhash].js` | Yes |
+| `assets/main-[newhash].js` | Yes |
+| `assets/main-[newhash].css` | Yes |
+| `assets/[font]-[newhash].woff2` | Yes (if fonts added) |
 | `assets/.vite/manifest.json` | Yes (updated) |
 
 ## Directory structure
@@ -73,12 +73,13 @@ sandbox-vite-plugin-shopify-clean/
 │   └── .vite/           # Manifest location
 ├── frontend/
 │   ├── entrypoints/
-│   │   ├── theme.js     # Main entry point (imports scripts + CSS)
-│   │   └── scripts/     # JS modules
-│   │       ├── theme.js
-│   │       └── product.js
-│   └── styles/
-│       └── theme.css
+│   │   ├── main.js      # Main entry point (imports scripts + CSS)
+│   │   ├── scripts/
+│   │   │   ├── theme.js
+│   │   │   └── product.js
+│   │   └── styles/
+│   │       └── theme.css
+│   └── fonts/           # Font files (add .woff2, .woff, etc.)
 ├── scripts/
 │   └── create-stale-files.js
 ├── snippets/            # vite-plugin-shopify output (gitignored)

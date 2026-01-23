@@ -9,16 +9,15 @@ mkdirSync(viteDir, { recursive: true })
 
 // Create fake old manifest (mimics vite-plugin-shopify output)
 const oldManifest = {
-  'frontend/entrypoints/theme.js': {
-    file: 'theme-OLD1234.js',
-    src: 'frontend/entrypoints/theme.js',
+  'frontend/entrypoints/main.js': {
+    file: 'main-OLD1234.js',
+    src: 'frontend/entrypoints/main.js',
     isEntry: true,
-    css: ['theme-OLD5678.css']
+    css: ['main-OLD5678.css']
   },
-  'frontend/entrypoints/product.js': {
-    file: 'product-OLD9abc.js',
-    src: 'frontend/entrypoints/product.js',
-    isEntry: true
+  'frontend/fonts/example.woff2': {
+    file: 'example-OLDabcd.woff2',
+    src: 'frontend/fonts/example.woff2'
   },
   'frontend/entrypoints/deleted-entry.js': {
     file: 'deleted-OLDdef0.js',
@@ -31,10 +30,10 @@ writeFileSync(join(viteDir, 'manifest.json'), JSON.stringify(oldManifest, null, 
 
 // Create corresponding stale asset files
 const staleFiles = [
-  'theme-OLD1234.js',
-  'theme-OLD5678.css',
-  'product-OLD9abc.js',
-  'deleted-OLDdef0.js', // Entry that no longer exists in source
+  'main-OLD1234.js',
+  'main-OLD5678.css',
+  'example-OLDabcd.woff2',  // Stale font file
+  'deleted-OLDdef0.js',     // Entry that no longer exists in source
 ]
 
 staleFiles.forEach(file => {
