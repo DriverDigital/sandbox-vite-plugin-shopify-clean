@@ -18,6 +18,6 @@
     "vite-plugin-shopify": "^4.1.1"
   },
   "dependencies": {
-    "@driver-digital/vite-plugin-shopify-clean": "file:../vite-plugin-shopify-clean/driver-digital-vite-plugin-shopify-clean-1.1.0.tgz"
+    "@driver-digital/vite-plugin-shopify-clean": "file:../vite-plugin-shopify-clean/driver-digital-vite-plugin-shopify-clean-1.1.1.tgz"
   }
 }
