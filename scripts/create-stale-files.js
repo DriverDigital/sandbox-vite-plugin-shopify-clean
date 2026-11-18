@@ -31,9 +31,11 @@ writeFileSync(join(viteDir, 'manifest.json'), JSON.stringify(oldManifest, null, 
 // Create corresponding stale asset files
 const staleFiles = [
   'main-OLD1234.js',
+  'main-OLD1234.js.map',    // Sourcemaps aren't in the manifest; the plugin removes them with their file
   'main-OLD5678.css',
   'example-OLDabcd.woff2',  // Stale font file
   'deleted-OLDdef0.js',     // Entry that no longer exists in source
+  'deleted-OLDdef0.js.map',
 ]
 
 staleFiles.forEach(file => {

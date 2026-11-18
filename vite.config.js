@@ -5,6 +5,7 @@ import shopify from 'vite-plugin-shopify'
 export default defineConfig({
   build: {
     emptyOutDir: false, // Important: let the plugin handle cleanup, not Vite
+    sourcemap: true,
   },
   plugins: [
     // shopifyClean(),
