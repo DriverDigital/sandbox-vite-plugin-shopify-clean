@@ -2,7 +2,9 @@
 
 Minimal repo for testing [@driver-digital/vite-plugin-shopify-clean](https://github.com/DriverDigital/vite-plugin-shopify-clean) before publishing.
 
-Uses [vite-plugin-shopify](https://shopify-vite.barrelny.com/) from Barrel to simulate a real Shopify theme setup.
+Uses [vite-plugin-shopify](https://shopify-vite.barrelny.com/) from Barrel to simulate a real Shopify theme setup, with `build.sourcemap` on so the test covers `.map` cleanup.
+
+The plugin repo's `npm run test:sandbox` runs the steps below automatically when this repo is checked out next to it, and fails if any `-OLD` file survives the build.
 
 ## Setup
 
@@ -19,7 +21,7 @@ npm install
 
 2. Install it here:
    ```bash
-   npm install /path/to/driver-digital-vite-plugin-shopify-clean-X.Y.Z.tgz
+   npm install --no-save /path/to/driver-digital-vite-plugin-shopify-clean-X.Y.Z.tgz
    ```
 
 3. Uncomment the plugin import and usage in `vite.config.js`
@@ -30,7 +32,7 @@ npm install
    ```
 
 5. Verify:
-   - Stale files (`*-OLD*.js`, `*-OLD*.css`) are deleted
+   - Stale files (`*-OLD*.js`, `*-OLD*.js.map`, `*-OLD*.css`, `*-OLD*.woff2`) are deleted
    - New hashed files exist in `assets/`
    - Manifest is updated at `assets/.vite/manifest.json`
 
@@ -57,10 +59,13 @@ After `npm run test-plugin`:
 | File | Should exist? |
 |------|---------------|
 | `assets/main-OLD1234.js` | No (cleaned) |
+| `assets/main-OLD1234.js.map` | No (cleaned) |
 | `assets/main-OLD5678.css` | No (cleaned) |
 | `assets/example-OLDabcd.woff2` | No (cleaned) |
 | `assets/deleted-OLDdef0.js` | No (cleaned) |
+| `assets/deleted-OLDdef0.js.map` | No (cleaned) |
 | `assets/main-[newhash].js` | Yes |
+| `assets/main-[newhash].js.map` | Yes |
 | `assets/main-[newhash].css` | Yes |
 | `assets/[font]-[newhash].woff2` | Yes (if fonts added) |
 | `assets/.vite/manifest.json` | Yes (updated) |
